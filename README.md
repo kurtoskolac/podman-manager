@@ -3,7 +3,7 @@ Python CLI tool for managing podman machine VM &amp; containers
 
 <LeftMouse># 🐳 Podman Machine Manager
 
-> A Python CLI tool for managing/automating lightweight Podman VM and & containers with ease.
+> A Python CLI tool for managing/automating lightweight Podman container runtime engines & containers with ease.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
