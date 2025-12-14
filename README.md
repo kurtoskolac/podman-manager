@@ -36,7 +36,7 @@ Perfect for developers running self-hosted services (Wiki.js, Vaultwarden, etc.)
 
 ```bash
 # Clone the repo
-git clone https://github.com/kurtoskolac45-ship-it/podman-manager.git
+git clone https://github.com/kurtoskolac/podman-manager.git
 cd podman-manager
 
 # Make it executable (optional)
@@ -70,6 +70,7 @@ podman-machine-default: Currently running
 2.) Stop VM
 3.) Start Containers
 4.) Stop Containers
+5.) Refresh
 0.) EXIT
 ```
 
@@ -83,6 +84,7 @@ Just type the number and hit enter. It's that simple.
 | `2` | Stop the Podman VM |
 | `3` | Run `podman-compose up -d` (start all containers) |
 | `4` | Run `podman-compose down` (stop all containers) |
+| `5` | Refresh banner menu |
 | `0` | Exit the program |
 
 ## 💡 Use Cases
@@ -130,7 +132,7 @@ MIT License - do whatever you want with it!
 
 **Danijel Taric**
 
-- GitHub: [@kurtoskolac45](https://github.com/kurtoskolac45)
+- GitHub: [@kurtoskolac45](https://github.com/kurtoskolac)
 
 ## 🙏 Acknowledgments
 
