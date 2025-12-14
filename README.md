@@ -132,7 +132,7 @@ MIT License - do whatever you want with it!
 
 **Danijel Taric**
 
-- GitHub: [@kurtoskolac45](https://github.com/kurtoskolac)
+- GitHub: [@kurtoskolac](https://github.com/kurtoskolac)
 
 ## 🙏 Acknowledgments
 
