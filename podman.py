@@ -5,7 +5,7 @@ import subprocess
 from pathlib import Path
 
 # Docker compose YAML file path
-COMPOSE_PATH = Path("/Users/username/Projects/self-hosted")
+COMPOSE_PATH = Path("/Users/kurtoskolac/Projects/self-hosted")
 
 
 # Print banner UI function /Added check for Windows
@@ -38,7 +38,7 @@ def print_banner():
     ║   ██║ ╚═╝ ██║██║  ██║██║ ╚████║██║  ██║╚██████╔╝███████╗██║  ██║
     ║   ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝
     ║                                                     ║
-    ║                   v0.5 • Данијел Тарић • 14/12/2025 ║
+    ║                   v0.7 • Данијел Тарић • 26/12/2025 ║
     ║                                                     ║
     ╚═════════════════════════════════════════════════════╝
     """
@@ -75,12 +75,19 @@ class PodmanMachine:
         print(f"Starting containers from: {COMPOSE_PATH}")
         print("Initilializing/running podman-compose up 'detached':")
 
-        subprocess.run(
+        # Opted to supress stdout but capture stderr
+        upReturn = subprocess.run(
             ["podman-compose", "up", "-d"],
             cwd=COMPOSE_PATH,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            text=True
         )
 
-        print("\n✓ Started Containers!")
+        if upReturn.returncode != 0:
+            print(f"Error: {upReturn.stderr}")
+        else:
+            print("\n✓ Started Containers!")
 
     def compose_down(self):
         print("Stopping containers:")
@@ -88,6 +95,8 @@ class PodmanMachine:
         subprocess.run(
             ["podman-compose", "down"],
             cwd=COMPOSE_PATH,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
         )
 
         print("\n Stopped containers!")
