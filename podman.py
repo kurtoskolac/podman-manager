@@ -5,7 +5,7 @@ import subprocess
 from pathlib import Path
 
 # Docker compose YAML file path
-COMPOSE_PATH = Path("/Users/kurtoskolac/Projects/self-hosted")
+COMPOSE_PATH = Path("/Users/$USERNAME/Projects/self-hosted")
 
 
 # Print banner UI function /Added check for Windows
@@ -38,7 +38,7 @@ def print_banner():
     ║   ██║ ╚═╝ ██║██║  ██║██║ ╚████║██║  ██║╚██████╔╝███████╗██║  ██║
     ║   ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝
     ║                                                     ║
-    ║                   v0.7 • Данијел Тарић • 26/12/2025 ║
+    ║                   v0.8 • Данијел Тарић • 28/12/2025 ║
     ║                                                     ║
     ╚═════════════════════════════════════════════════════╝
     """
@@ -80,8 +80,8 @@ class PodmanMachine:
             ["podman-compose", "up", "-d"],
             cwd=COMPOSE_PATH,
             stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-            text=True
+            stderr=subprocess.PIPE,
+            text=True,
         )
 
         if upReturn.returncode != 0:
@@ -92,14 +92,18 @@ class PodmanMachine:
     def compose_down(self):
         print("Stopping containers:")
 
-        subprocess.run(
+        downReturn = subprocess.run(
             ["podman-compose", "down"],
             cwd=COMPOSE_PATH,
             stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
+            stderr=subprocess.PIPE,
+            text=True,
         )
 
-        print("\n Stopped containers!")
+        if downReturn.returncode != 0:
+            print(f"Error: {downReturn.stderr}")
+        else:
+            print("\n Stopped containers!")
 
 
 def main():
